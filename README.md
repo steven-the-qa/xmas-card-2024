@@ -29,9 +29,5 @@ A simple and delightful way to share your holiday joy with family and friends! T
    - Personalize the signature with your name(s)
 
 4. **Deploy and Share**
-   - Host on GitHub Pages, Netlify, or your preferred platform
+   - Host on GitHub Pages as a static site
    - Share the link with your loved ones!
-
-## 🛠️ Development
-
-If you want to modify the design: 
