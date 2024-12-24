@@ -74,4 +74,8 @@ img {
     flex-direction: column;
     align-items: center;
     width: 100%;
-} 
+}
+
+.border-gradient-to-br {
+    border-image: linear-gradient(to bottom right, #1a472a, #2d6a4f) 1;
+}

@@ -6,25 +6,32 @@
     <title>Christmas Card</title>
     <link rel="stylesheet" href="./dist/output.css">
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <style>
+        .border-gradient-to-br {
+            border-image: linear-gradient(to bottom right, #1a472a, #2d6a4f) 1;
+        }
+    </style>
 </head>
 <body class="m-0 py-5 min-h-screen flex flex-col items-center bg-christmas-green font-sans">
     <div class="flex flex-col items-center w-full">
-        <div id="card-container" class="w-[90%] max-w-[800px] p-8 text-center text-white bg-gradient-to-br from-christmas-red-dark to-christmas-red-light shadow-lg">
-            <div class="text-3xl my-2.5">❄️ 🐈‍⬛ 🎄 🐾 ❄️</div>
-            <div class="bg-gray-100 p-5 rounded-lg my-5">
-                <img src="./ChristkindlMarket2024.jpg" 
-                     alt="Christmas Photo" 
-                     crossorigin="anonymous"
-                     class="w-full h-auto rounded">
+        <div id="card-container" class="w-[90%] max-w-[800px] text-center text-white bg-gradient-to-br from-christmas-red-dark to-christmas-red-light shadow-lg">
+            <div class="p-8 border-[12px] border-gradient-to-br">
+                <div class="text-3xl my-2.5">❄️ 🐈‍⬛ 🎄 🐾 ❄️</div>
+                <div class="bg-gray-100 p-5 rounded-lg my-5">
+                    <img src="./ChristkindlMarket2024.jpg" 
+                         alt="Christmas Photo" 
+                         crossorigin="anonymous"
+                         class="w-full h-auto rounded">
+                </div>
+                <div class="text-xl my-6 leading-relaxed">
+                    Meowy Christmas and Happy Paw-lidays!<br>
+                </div>
+                <div class="italic text-white/90 mt-5">
+                    With Love,<br>
+                    Sam, Steven, Sadie & Bean
+                </div>
+                <div class="text-3xl my-2.5">❄️ 🐾 🎄 🐈‍⬛ ❄️</div>
             </div>
-            <div class="text-xl my-6 leading-relaxed">
-                Meowy Christmas and Happy Paw-lidays!<br>
-            </div>
-            <div class="italic text-white/90 mt-5">
-                With Love,<br>
-                Sam, Steven, Sadie & Bean
-            </div>
-            <div class="text-3xl my-2.5">❄️ 🐾 🎄 🐈‍⬛ ❄️</div>
         </div>
         <button 
             onclick="downloadCard()" 

@@ -655,6 +655,10 @@ video {
   border-radius: 0.5rem;
 }
 
+.border-\[12px\] {
+  border-width: 12px;
+}
+
 .bg-christmas-green {
   --tw-bg-opacity: 1;
   background-color: rgb(26 71 42 / var(--tw-bg-opacity, 1));
@@ -680,8 +684,18 @@ video {
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
+.from-\[\#1a472a\] {
+  --tw-gradient-from: #1a472a var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(26 71 42 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
 .to-christmas-red-light {
   --tw-gradient-to: #c41e3a var(--tw-gradient-to-position);
+}
+
+.to-\[\#2d6a4f\] {
+  --tw-gradient-to: #2d6a4f var(--tw-gradient-to-position);
 }
 
 .p-5 {
