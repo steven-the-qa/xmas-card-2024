@@ -1,97 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- Add html2canvas library -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christmas Card</title>
+    <link rel="stylesheet" href="styles.css">
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-    <style>
-        body {
-            margin: 0;
-            padding: 20px 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: #1a472a;
-            font-family: 'Arial', sans-serif;
-        }
-        
-        .card {
-            background: linear-gradient(315deg, #8b0000, #c41e3a);  /* Dark red to our Christmas red */
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            width: 90%;
-            max-width: 800px;
-            padding: 30px;
-            text-align: center;
-            color: white;
-        }
-        
-        .photo-frame {
-            background: #f8f8f8;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-        }
-        
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 5px;
-        }
-        
-        .message {
-            font-size: 1.2em;
-            color: white;
-            margin: 25px 0;
-            line-height: 1.6;
-        }
-        
-        .signature {
-            font-style: italic;
-            color: rgba(255, 255, 255, 0.9);
-            margin-top: 20px;
-        }
-        
-        .decoration {
-            color: #c0392b;
-            font-size: 2em;
-            margin: 10px 0;
-        }
-        
-        /* Add button styles */
-        .download-btn {
-            background: #c41e3a;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1.1em;
-            margin-top: 20px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            border: 2px solid transparent;
-        }
-
-        .download-btn:hover {
-            background: #e52d4b;
-        }
-
-        /* Add this new container style */
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-        }
-    </style>
 </head>
 <body>
     <div class="container">
         <div class="card" id="card-container">
             <div class="decoration">❄️ 🐈‍⬛ 🎄 🐾 ❄️</div>
             <div class="photo-frame">
-                <!-- Updated image path - adjust this to match your project structure -->
                 <img src="./ChristkindlMarket2024.jpg" alt="Christmas Photo" crossorigin="anonymous">
             </div>
             <div class="message">
@@ -106,43 +26,6 @@
         <button class="download-btn" onclick="downloadCard()">Save Card</button>
     </div>
 
-    <script>
-        async function downloadCard() {
-            try {
-                // First ensure image is loaded
-                const img = document.querySelector('.photo-frame img');
-                await new Promise((resolve, reject) => {
-                    const newImg = new Image();
-                    newImg.crossOrigin = "anonymous";
-                    newImg.onload = () => {
-                        img.src = newImg.src;
-                        resolve();
-                    };
-                    newImg.onerror = reject;
-                    newImg.src = img.src;
-                });
-
-                // Configure html2canvas
-                const canvas = await html2canvas(document.getElementById('card-container'), {
-                    useCORS: true,
-                    allowTaint: false,
-                    scale: 2,
-                    logging: true,
-                    backgroundColor: '#ffffff'
-                });
-                
-                // Create download link
-                const link = document.createElement('a');
-                link.download = 'Christmas-Card.png';
-                link.href = canvas.toDataURL('image/png');
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            } catch (error) {
-                console.error('Error generating image:', error);
-                alert('Sorry, there was an error generating the image. Please try again.');
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
