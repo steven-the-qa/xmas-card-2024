@@ -110,33 +110,29 @@
                 // First ensure image is loaded
                 const img = document.querySelector('.photo-frame img');
                 await new Promise((resolve, reject) => {
-                    if (img.complete) {
+                    const newImg = new Image();
+                    newImg.crossOrigin = "anonymous";
+                    newImg.onload = () => {
+                        img.src = newImg.src;
                         resolve();
-                    } else {
-                        img.onload = resolve;
-                        img.onerror = reject;
-                    }
+                    };
+                    newImg.onerror = reject;
+                    newImg.src = img.src;
                 });
 
-                // Configure html2canvas with more options
+                // Configure html2canvas
                 const canvas = await html2canvas(document.getElementById('card-container'), {
                     useCORS: true,
-                    allowTaint: true,
-                    foreignObjectRendering: true,
-                    logging: true,
+                    allowTaint: false,
                     scale: 2,
-                    imageTimeout: 0,
-                    onclone: function(clonedDoc) {
-                        // Ensure image in cloned document is loaded
-                        const clonedImg = clonedDoc.querySelector('.photo-frame img');
-                        clonedImg.crossOrigin = "anonymous";
-                    }
+                    logging: true,
+                    backgroundColor: '#ffffff'
                 });
                 
                 // Create download link
                 const link = document.createElement('a');
                 link.download = 'Christmas-Card.png';
-                link.href = canvas.toDataURL('image/png', 1.0);
+                link.href = canvas.toDataURL('image/png');
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
