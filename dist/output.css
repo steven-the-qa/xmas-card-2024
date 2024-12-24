@@ -639,6 +639,10 @@ video {
   width: 100%;
 }
 
+.w-\[80\%\] {
+  width: 80%;
+}
+
 .max-w-\[800px\] {
   max-width: 800px;
 }
@@ -653,6 +657,10 @@ video {
 
 .items-center {
   align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
 }
 
 .rounded {
