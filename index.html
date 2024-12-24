@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Add html2canvas library -->
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(135deg, #1a472a, #2a623d);
+            font-family: 'Arial', sans-serif;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            width: 90%;
+            max-width: 800px;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .photo-frame {
+            background: #f8f8f8;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        
+        .message {
+            font-size: 1.2em;
+            color: #2c3e50;
+            margin: 25px 0;
+            line-height: 1.6;
+        }
+        
+        .signature {
+            font-style: italic;
+            color: #7f8c8d;
+            margin-top: 20px;
+        }
+        
+        .decoration {
+            color: #c0392b;
+            font-size: 2em;
+            margin: 10px 0;
+        }
+        
+        /* Add button styles */
+        .download-btn {
+            background: #1a472a;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+
+        .download-btn:hover {
+            background: #2a623d;
+        }
+
+        /* Add this new container style */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card" id="card-container">
+            <div class="decoration">❄️ 🎄 ❄️</div>
+            <div class="photo-frame">
+                <!-- Updated image path - adjust this to match your project structure -->
+                <img src="/ChristkindlMarket2024.jpg" alt="Christmas Photo" crossorigin="anonymous">
+            </div>
+            <div class="message">
+                Wishing you a joyful holiday season filled with warmth, laughter, and cherished moments.
+                May the magic of Christmas bring you peace and happiness throughout the coming year.
+            </div>
+            <div class="signature">
+                With love,<br>
+                [Your Name]
+            </div>
+            <div class="decoration">❄️ 🎄 ❄️</div>
+        </div>
+        <button class="download-btn" onclick="downloadCard()">Save Card</button>
+    </div>
+
+    <script>
+        async function downloadCard() {
+            try {
+                // First ensure image is loaded
+                const img = document.querySelector('.photo-frame img');
+                await new Promise((resolve, reject) => {
+                    if (img.complete) {
+                        resolve();
+                    } else {
+                        img.onload = resolve;
+                        img.onerror = reject;
+                    }
+                });
+
+                // Configure html2canvas with more options
+                const canvas = await html2canvas(document.getElementById('card-container'), {
+                    useCORS: true,
+                    allowTaint: true,
+                    foreignObjectRendering: true,
+                    logging: true,
+                    scale: 2,
+                    imageTimeout: 0,
+                    onclone: function(clonedDoc) {
+                        // Ensure image in cloned document is loaded
+                        const clonedImg = clonedDoc.querySelector('.photo-frame img');
+                        clonedImg.crossOrigin = "anonymous";
+                    }
+                });
+                
+                // Create download link
+                const link = document.createElement('a');
+                link.download = 'Christmas-Card.png';
+                link.href = canvas.toDataURL('image/png', 1.0);
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            } catch (error) {
+                console.error('Error generating image:', error);
+                alert('Sorry, there was an error generating the image. Please try again.');
+            }
+        }
+    </script>
+</body>
+</html>
