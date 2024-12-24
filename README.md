@@ -2,6 +2,8 @@
 
 A simple and delightful way to share your holiday joy with family and friends! This project lets you create a downloadable Christmas card featuring your favorite holiday photo.
 
+![Sam-Steven-Sadie-Bean-Christmas-Card-2024 (8)](https://github.com/user-attachments/assets/03852e7c-2c57-4b51-997c-917f0dc35779)
+
 ## 🎅 Features
 
 - **Personalized Photo Display**: Showcase your special Christmas moment
