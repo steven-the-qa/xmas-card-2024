@@ -5,12 +5,25 @@ async function downloadCard() {
             throw new Error('Card container element not found');
         }
 
+        // Wait for image to load
+        const img = card.querySelector('img');
+        await new Promise((resolve) => {
+            if (img.complete) resolve();
+            else img.onload = resolve;
+        });
+
         const canvas = await html2canvas(card, {
-            useCORS: true,            // Enable CORS
-            allowTaint: true,         // Allow cross-origin images
-            logging: true,            // For debugging
-            scale: 2,                 // For better quality
-            backgroundColor: null     // Preserve transparency
+            useCORS: true,
+            allowTaint: true,
+            backgroundColor: null,
+            scale: 2,
+            logging: false,
+            onclone: function(clonedDoc) {
+                const clonedCard = clonedDoc.getElementById('card-container');
+                if (clonedCard) {
+                    clonedCard.style.transform = 'none';
+                }
+            }
         });
         
         // Create blob for better memory handling
