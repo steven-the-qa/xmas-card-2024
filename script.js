@@ -21,7 +21,7 @@ async function downloadCard() {
         // Use URL.createObjectURL for better performance
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
-        link.download = 'christmas-card.png';
+        link.download = 'Sam-Steven-Sadie-Bean-Christmas-Card-2024.png';
         link.href = url;
         link.click();
         
