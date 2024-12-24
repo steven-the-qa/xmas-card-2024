@@ -4,28 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Christmas Card</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./dist/output.css">
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 </head>
-<body>
-    <div class="container">
-        <div class="card" id="card-container">
-            <div class="decoration">❄️ 🐈‍⬛ 🎄 🐾 ❄️</div>
-            <div class="photo-frame">
-                <img src="./ChristkindlMarket2024.jpg" alt="Christmas Photo" crossorigin="anonymous">
+<body class="m-0 py-5 min-h-screen flex flex-col items-center bg-christmas-green font-sans">
+    <div class="flex flex-col items-center w-full">
+        <div id="card-container" class="w-[90%] max-w-[800px] p-8 text-center text-white bg-gradient-to-br from-christmas-red-dark to-christmas-red-light shadow-lg">
+            <div class="text-3xl my-2.5">❄️ 🐈‍⬛ 🎄 🐾 ❄️</div>
+            <div class="bg-gray-100 p-5 rounded-lg my-5">
+                <img src="./ChristkindlMarket2024.jpg" 
+                     alt="Christmas Photo" 
+                     crossorigin="anonymous"
+                     class="w-full h-auto rounded">
             </div>
-            <div class="message">
+            <div class="text-xl my-6 leading-relaxed">
                 Meowy Christmas and Happy Paw-lidays!<br>
             </div>
-            <div class="signature">
+            <div class="italic text-white/90 mt-5">
                 With Love,<br>
                 Sam, Steven, Sadie & Bean
             </div>
-            <div class="decoration">❄️ 🐾 🎄 🐈‍⬛ ❄️</div>
+            <div class="text-3xl my-2.5">❄️ 🐾 🎄 🐈‍⬛ ❄️</div>
         </div>
-        <button class="download-btn" onclick="downloadCard()">Save Card</button>
+        <button 
+            onclick="downloadCard()" 
+            class="mt-5 px-6 py-3 bg-christmas-red-light text-white rounded cursor-pointer text-lg transition-all duration-300 shadow-lg hover:bg-christmas-red-hover">
+            Save Card
+        </button>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
