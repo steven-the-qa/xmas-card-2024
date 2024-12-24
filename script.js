@@ -1,34 +1,32 @@
 async function downloadCard() {
     try {
-        // First ensure image is loaded
-        const img = document.querySelector('.photo-frame img');
-        await new Promise((resolve, reject) => {
-            const newImg = new Image();
-            newImg.crossOrigin = "anonymous";
-            newImg.onload = () => {
-                img.src = newImg.src;
-                resolve();
-            };
-            newImg.onerror = reject;
-            newImg.src = img.src;
-        });
+        const card = document.getElementById('card-container');
+        if (!card) {
+            throw new Error('Card container element not found');
+        }
 
-        // Configure html2canvas
-        const canvas = await html2canvas(document.getElementById('card-container'), {
-            useCORS: true,
-            allowTaint: false,
-            scale: 2,
-            logging: true,
-            backgroundColor: '#ffffff'
+        const canvas = await html2canvas(card, {
+            useCORS: true,            // Enable CORS
+            allowTaint: true,         // Allow cross-origin images
+            logging: true,            // For debugging
+            scale: 2,                 // For better quality
+            backgroundColor: null     // Preserve transparency
         });
         
-        // Create download link
+        // Create blob for better memory handling
+        const blob = await new Promise(resolve => {
+            canvas.toBlob(resolve, 'image/png');
+        });
+        
+        // Use URL.createObjectURL for better performance
+        const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
-        link.download = 'Christmas-Card.png';
-        link.href = canvas.toDataURL('image/png');
-        document.body.appendChild(link);
+        link.download = 'christmas-card.png';
+        link.href = url;
         link.click();
-        document.body.removeChild(link);
+        
+        // Clean up
+        URL.revokeObjectURL(url);
     } catch (error) {
         console.error('Error generating image:', error);
         alert('Sorry, there was an error generating the image. Please try again.');
