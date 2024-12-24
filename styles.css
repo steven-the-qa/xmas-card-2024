@@ -11,7 +11,6 @@ body {
 
 .card {
     background: linear-gradient(315deg, #8b0000, #c41e3a);
-    border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     width: 90%;
     max-width: 800px;
