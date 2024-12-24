@@ -16,27 +16,17 @@
             max-width: 816px;
         }
 
-        .border-gradient-to-br::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            padding: 8px;
-            background: linear-gradient(to bottom right, #1a472a, #2d6a4f);
-            -webkit-mask: 
-                linear-gradient(#fff 0 0) content-box, 
-                linear-gradient(#fff 0 0);
-            mask: 
-                linear-gradient(#fff 0 0) content-box, 
-                linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
+        .card-content {
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(to bottom right, #8b0000, #c41e3a);
         }
     </style>
 </head>
 <body class="m-0 py-5 min-h-screen flex flex-col items-center bg-christmas-green font-sans">
     <div class="flex flex-col items-center w-full">
         <div id="card-container" class="border-gradient-to-br">
-            <div class="p-8 text-center text-white bg-gradient-to-br from-christmas-red-dark to-christmas-red-light shadow-lg">
+            <div class="card-content p-8 text-center text-white shadow-lg">
                 <div class="text-3xl my-2.5">❄️ 🐈‍⬛ 🎄 🐾 ❄️</div>
                 <div class="my-5 flex justify-center">
                     <img src="./ChristkindlMarket2024.jpg" 
